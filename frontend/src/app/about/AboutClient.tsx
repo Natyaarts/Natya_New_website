@@ -37,28 +37,29 @@ export default function AboutClient() {
   ]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/founders/')
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+    fetch(`${apiUrl}/founders/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setFounders(data);
       })
       .catch(console.error);
 
-    fetch('http://127.0.0.1:8000/api/team/')
+    fetch(`${apiUrl}/team/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setTeam(data);
       })
       .catch(console.error);
 
-    fetch('http://127.0.0.1:8000/api/stats/')
+    fetch(`${apiUrl}/stats/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setStats(data);
       })
       .catch(console.error);
 
-    fetch('http://127.0.0.1:8000/api/features/')
+    fetch(`${apiUrl}/features/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setFeatures(data);

@@ -35,7 +35,8 @@ export default function GalleryClient() {
   const heroY = useTransform(heroProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/gallery-categories/')
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+    fetch(`${apiUrl}/gallery-categories/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {

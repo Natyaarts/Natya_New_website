@@ -51,7 +51,8 @@ export default function ContactClient() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/contact-info/")
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+    fetch(`${apiUrl}/contact-info/`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -76,7 +77,8 @@ export default function ContactClient() {
     setError("");
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/call-requests/", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+      const res = await fetch(`${apiUrl}/call-requests/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

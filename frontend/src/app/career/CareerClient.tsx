@@ -56,7 +56,8 @@ export default function CareerClient() {
     formData.append("cover_letter", coverLetter);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/job-applications/", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+      const res = await fetch(`${apiUrl}/job-applications/`, {
         method: "POST",
         body: formData,
       });
@@ -84,17 +85,18 @@ export default function CareerClient() {
   const heroOpacity = useTransform(heroProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/jobs/')
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+    fetch(`${apiUrl}/jobs/`)
       .then(res => res.json())
       .then(data => { if (data && data.length > 0) setJobs(data); })
       .catch(console.error);
 
-    fetch('http://127.0.0.1:8000/api/benefits/')
+    fetch(`${apiUrl}/benefits/`)
       .then(res => res.json())
       .then(data => { if (data && data.length > 0) setBenefits(data); })
       .catch(console.error);
 
-    fetch('http://127.0.0.1:8000/api/faqs/')
+    fetch(`${apiUrl}/faqs/`)
       .then(res => res.json())
       .then(data => { if (data && data.length > 0) setFaqs(data); })
       .catch(console.error);

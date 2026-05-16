@@ -98,7 +98,8 @@ export default function Home() {
   ]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/testimonials/')
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+    fetch(`${apiUrl}/testimonials/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {
@@ -107,7 +108,7 @@ export default function Home() {
       })
       .catch(err => console.error("Error fetching testimonials:", err));
 
-    fetch('http://127.0.0.1:8000/api/partners/')
+    fetch(`${apiUrl}/partners/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {

@@ -24,7 +24,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch dynamic course routes from Django API
   let dynamicRoutes: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/courses/', { next: { revalidate: 3600 } });
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
+    const res = await fetch(`${apiUrl}/courses/`, { next: { revalidate: 3600 } });
     if (res.ok) {
       const courses = await res.json();
       if (Array.isArray(courses)) {
