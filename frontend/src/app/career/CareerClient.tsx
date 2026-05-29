@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Search, ChevronDown, ChevronUp, ArrowUpRight, Sparkles, Heart, BookOpen, Globe, X, CheckCircle2 } from "lucide-react";
+import { API_URL } from "@/config/api";
 
 export default function CareerClient() {
   const [jobs, setJobs] = useState<any[]>([]);
@@ -56,8 +57,7 @@ export default function CareerClient() {
     formData.append("cover_letter", coverLetter);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-      const res = await fetch(`${apiUrl}/job-applications/`, {
+      const res = await fetch(`${API_URL}/job-applications/`, {
         method: "POST",
         body: formData,
       });
@@ -85,18 +85,17 @@ export default function CareerClient() {
   const heroOpacity = useTransform(heroProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-    fetch(`${apiUrl}/jobs/`)
+    fetch(`${API_URL}/jobs/`)
       .then(res => res.json())
       .then(data => { if (data && data.length > 0) setJobs(data); })
       .catch(console.error);
 
-    fetch(`${apiUrl}/benefits/`)
+    fetch(`${API_URL}/benefits/`)
       .then(res => res.json())
       .then(data => { if (data && data.length > 0) setBenefits(data); })
       .catch(console.error);
 
-    fetch(`${apiUrl}/faqs/`)
+    fetch(`${API_URL}/faqs/`)
       .then(res => res.json())
       .then(data => { if (data && data.length > 0) setFaqs(data); })
       .catch(console.error);

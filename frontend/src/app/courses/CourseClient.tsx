@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Search, ArrowUpRight, Sparkles, BookOpen, Award, Users, CheckCircle2 } from "lucide-react";
+import { API_URL } from "@/config/api";
 
 export default function CourseClient() {
   const [categories, setCategories] = useState<any[]>([]);
@@ -17,8 +18,7 @@ export default function CourseClient() {
   const heroOpacity = useTransform(heroProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-    fetch(`${apiUrl}/course-categories/`)
+    fetch(`${API_URL}/course-categories/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {
@@ -138,7 +138,7 @@ export default function CourseClient() {
                   <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-6 bg-zinc-900 border border-white/5 shadow-inner">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
                     <img
-                      src={course.image ? (course.image.startsWith('http') ? course.image : `http://3.111.197.92${course.image}`) : '/img/hero.png'}
+                      src={course.image ? (course.image.startsWith('http') ? course.image : `${API_URL.replace('/api', '')}${course.image}`) : '/img/hero.png'}
                       alt={course.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     />

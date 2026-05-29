@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { API_URL } from "@/config/api";
 
 const ScrollText = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
   const ref = useRef(null);
@@ -35,8 +36,7 @@ export default function GalleryClient() {
   const heroY = useTransform(heroProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-    fetch(`${apiUrl}/gallery-categories/`)
+    fetch(`${API_URL}/gallery-categories/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {
@@ -129,7 +129,7 @@ export default function GalleryClient() {
                   className="break-inside-avoid relative group rounded-[2rem] overflow-hidden bg-zinc-900 shadow-2xl cursor-pointer"
                 >
                   <img
-                    src={img.image}
+                    src={img.image ? (img.image.startsWith('http') ? img.image : `${API_URL.replace('/api', '')}${img.image}`) : '/img/hero.png'}
                     alt={img.caption || "Natya Arts Academy Student Performance and Stage Show"}
                     className="w-full h-auto object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out group-hover:scale-105"
                   />

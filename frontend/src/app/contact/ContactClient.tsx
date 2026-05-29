@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, AlertCircle, ArrowUpRight, Sparkles, MessageSquare } from "lucide-react";
+import { API_URL } from "@/config/api";
 
 // Custom crisp SVG icons for 100% build reliability
 const TwitterIcon = ({ className = "w-3.5 h-3.5" }) => (
@@ -51,8 +52,7 @@ export default function ContactClient() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-    fetch(`${apiUrl}/contact-info/`)
+    fetch(`${API_URL}/contact-info/`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
@@ -77,8 +77,7 @@ export default function ContactClient() {
     setError("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-      const res = await fetch(`${apiUrl}/call-requests/`, {
+      const res = await fetch(`${API_URL}/call-requests/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { API_URL } from "@/config/api";
 
 const ScrollText = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
   const ref = useRef(null);
@@ -37,29 +38,28 @@ export default function AboutClient() {
   ]);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-    fetch(`${apiUrl}/founders/`)
+    fetch(`${API_URL}/founders/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setFounders(data);
       })
       .catch(console.error);
 
-    fetch(`${apiUrl}/team/`)
+    fetch(`${API_URL}/team/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setTeam(data);
       })
       .catch(console.error);
 
-    fetch(`${apiUrl}/stats/`)
+    fetch(`${API_URL}/stats/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setStats(data);
       })
       .catch(console.error);
 
-    fetch(`${apiUrl}/features/`)
+    fetch(`${API_URL}/features/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) setFeatures(data);

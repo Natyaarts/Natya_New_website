@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Quote, Sparkles, Target, Eye } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { API_URL } from "@/config/api";
 
 const ScrollText = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
   const ref = useRef(null);
@@ -98,8 +99,7 @@ export default function Home() {
   ]);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://3.111.197.92/api';
-    fetch(`${apiUrl}/testimonials/`)
+    fetch(`${API_URL}/testimonials/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {
@@ -108,7 +108,7 @@ export default function Home() {
       })
       .catch(err => console.error("Error fetching testimonials:", err));
 
-    fetch(`${apiUrl}/partners/`)
+    fetch(`${API_URL}/partners/`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {
