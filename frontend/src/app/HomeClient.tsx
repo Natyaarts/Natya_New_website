@@ -247,20 +247,20 @@ export default function HomeClient() {
       </section>
 
       {/* Minimalist Affiliations */}
-      <section className="py-32 px-6 bg-white text-black">
+      <section className="py-36 md:py-48 px-6 bg-white text-black">
         <ScrollText className="max-w-6xl mx-auto text-center">
-          <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-16">Recognized Worldwide</h3>
-          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 opacity-80 hover:opacity-100 transition-opacity duration-500">
+          <h3 className="text-sm md:text-base font-semibold text-zinc-400 uppercase tracking-widest mb-20 md:mb-28">Recognized Worldwide</h3>
+          <div className="flex flex-wrap justify-center items-center gap-20 md:gap-32 opacity-95 hover:opacity-100 transition-opacity duration-500">
             {partners.map((partner, i) => (
               partner.logo ? (
                 <img 
                   key={i} 
                   src={partner.logo} 
                   alt={partner.name} 
-                  className="h-12 md:h-16 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500" 
+                  className="h-20 md:h-28 max-w-[180px] md:max-w-[280px] object-contain grayscale opacity-85 hover:grayscale-0 hover:opacity-100 transition-all duration-500" 
                 />
               ) : (
-                <div key={i} className="text-2xl md:text-3xl font-bold tracking-tight text-black hover:text-primary transition-colors cursor-pointer">
+                <div key={i} className="text-3xl md:text-5xl font-bold tracking-tight text-black hover:text-primary transition-colors cursor-pointer">
                   {partner.name} <span className="text-zinc-400">{partner.subtitle}</span>
                 </div>
               )
