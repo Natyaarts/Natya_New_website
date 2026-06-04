@@ -91,8 +91,8 @@ export default function Navbar() {
 
           {/* CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-4 z-50">
-            <Link 
-              href="/contact"
+            <a 
+              href="https://learn.natyaarts.com/"
               className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-white text-black text-sm font-medium uppercase tracking-wider rounded-full hover:bg-zinc-200 transition-all duration-300 group shadow-lg"
             >
               Enroll Now
@@ -103,7 +103,7 @@ export default function Navbar() {
               >
                 <ChevronRight size={16} />
               </motion.span>
-            </Link>
+            </a>
 
             <button
               className="lg:hidden relative w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white text-black hover:bg-zinc-200 transition-colors shadow-lg"
@@ -183,13 +183,13 @@ export default function Navbar() {
                 transition={{ delay: 0.6, duration: 0.4 }}
                 className="mt-6 w-full max-w-xs"
               >
-                <Link
-                  href="/contact"
+                <a
+                  href="https://learn.natyaarts.com/"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-full py-3 bg-primary text-black font-bold text-xs uppercase tracking-widest rounded-full flex items-center justify-center gap-2 hover:bg-yellow-400 transition-colors shadow-[0_0_25px_rgba(250,204,21,0.25)]"
                 >
                   Enroll Now <ChevronRight size={16} />
-                </Link>
+                </a>
               </motion.div>
             </div>
           </motion.div>
