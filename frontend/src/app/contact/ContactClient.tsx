@@ -247,6 +247,20 @@ export default function ContactClient() {
               <Link href="/refund" className="text-zinc-300 underline hover:text-primary">Refund Policy</Link> and{" "}
               <Link href="/privacy" className="text-zinc-300 underline hover:text-primary">Privacy Policy</Link>.
             </div>
+
+            {/* Interactive Location Map (Fills the height gap) */}
+            <div className="h-[300px] w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-xl relative group bg-zinc-900/40">
+              <iframe
+                src="https://maps.google.com/maps?q=SG%20Arcade,%20KT%20Gopalan%20Rd,%20Kottooli,%20Kozhikode,%20Kerala%20673016&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "grayscale(1) invert(0.9) contrast(1.2)" }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="opacity-70 group-hover:opacity-90 transition-opacity duration-500"
+              ></iframe>
+            </div>
           </motion.div>
 
           {/* Right Column: Call Back Form (7 cols) */}

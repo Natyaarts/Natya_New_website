@@ -12,13 +12,13 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://natyaarts.com"),
-  title: "Natya | Elevating Art Beyond Boundaries",
+  title: {
+    default: "Natya | Elevating Art Beyond Boundaries",
+    template: "%s | Natya Arts",
+  },
   description: "Natya is a premier institute for arts, offering professional courses in dance, music, and creative expression. Discover our gallery and career opportunities.",
   keywords: "Natya, Arts, Dance, Music, Courses, Academy, Professional Arts, Bharatanatyam, Carnatic Music, Mohiniyattam, Kuchipudi, Kathak",
   authors: [{ name: "Kalamandalam Sivaprasad" }, { name: "Kalakshetra Anjali" }],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "Natya | Elevating Art Beyond Boundaries",
     description: "Natya is a premier institute for arts, offering professional courses in dance, music, and creative expression. Discover our gallery and career opportunities.",

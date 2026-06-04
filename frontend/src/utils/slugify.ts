@@ -1,0 +1,17 @@
+/**
+ * Robustly converts a string (like a course title) into a URL-friendly slug.
+ * E.g., "Bharatanatyam Foundation & Advanced" -> "bharatanatyam-foundation-and-advanced"
+ */
+export function slugify(text: string): string {
+  if (!text) return "";
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except -
+    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+}
